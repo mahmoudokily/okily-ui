@@ -1,0 +1,49 @@
+// override default variables for BaseTable
+$table-prefix: AdvanceTable;
+
+$table-font-size: 13px;
+$table-padding-left: 15px;
+$table-padding-right: 15px;
+$column-padding: 7.5px;
+
+$show-frozen-rows-shadow: false;
+$show-frozen-columns-shadow: true;
+
+@import "~react-base-table/es/_BaseTable.scss";
+
+.#{$table-prefix} {
+  &:not(.#{$table-prefix}--show-left-shadow) {
+    .#{$table-prefix}__table-frozen-left {
+      box-shadow: none;
+    }
+  }
+
+  &:not(.#{$table-prefix}--show-right-shadow) {
+    .#{$table-prefix}__table-frozen-right {
+      box-shadow: none;
+    }
+  }
+}
+.BaseTable__header-row,
+.BaseTable__row {
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+.BaseTable {
+  box-shadow: none;
+  cursor: pointer;
+}
+.BaseTable__table-main {
+  outline: none !important;
+}
+.selectedRow {
+  border: 2px solid #3d729c;
+}
+
+.BaseTable__row {
+  &:nth-child(even) {
+    background-color: #fafafa;
+  }
+}
