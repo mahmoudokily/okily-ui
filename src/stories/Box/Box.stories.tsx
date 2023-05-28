@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import theme from "../../ui/theme";
-import { Box as Component } from './Box'
+import Component from '../Drower/Drawer'
 import React from 'react';
 type Props = React.ComponentProps<typeof Component>
 export default {
@@ -8,7 +8,6 @@ export default {
       component: Component,
       // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
       argTypes: {
-            backgroundColor: { control: 'red' },
 
       },
 
@@ -19,9 +18,3 @@ const Template: ComponentStory<typeof Component> = (args) => <Component  {...arg
 
 export const Box = Template.bind({})
 
-Box.args = {
-      backgroundColor: 'red',
-      width: '200px',
-      height: 200,
-      withEffect: true
-}

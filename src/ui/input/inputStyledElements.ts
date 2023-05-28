@@ -1,12 +1,11 @@
 import styled, { css } from "styled-components";
-import { InputContainerProps, InputIconProps, InputProps } from "./types";
 import { Box } from "../Box";
-import { defaultProps, DefaultProps } from "../helpers";
-import { CSSHelper, JSXElementProps } from "../helpers/CssHelper";
-import { Shape, Size, Variant } from "../helpers/types";
 import Svg from "../Svg";
-import { CustomTheme } from "../theme";
 import { Typography } from "../Typography";
+import { defaultProps } from "../helpers";
+import { CSSHelper } from "../helpers/CssHelper";
+import { CustomTheme } from "../theme";
+import { InputContainerProps, InputIconProps, InputProps } from "./types";
 
 
 
@@ -47,7 +46,7 @@ export const InputIcon = styled(Box) <InputIconProps>`
 
     }
     font-size: ${theme?.form?.inputFontSize?.[$size]};
-        ${$type == "left"
+        ${$type === "left"
       ? `
             border-top-left-radius: ${theme?.form?.inputRadius?.[$shape]};
             border-bottom-left-radius: ${theme?.form?.inputRadius?.[$shape]};

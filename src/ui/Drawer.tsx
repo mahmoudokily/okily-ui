@@ -1,12 +1,15 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import styled from "styled-components";
+import { Absolute } from "./Absolute";
+import { Button } from "./button/Button";
 type DrawerContainerProps = {
   children: React.ReactNode;
+  isOpen: boolean;
 };
 
 const DrawerContainer = styled.div<DrawerContainerProps>`
-  width: 210px;
-  min-width: 210px;
+  width: ${({ isOpen }) => isOpen ? '200px' : '80px'};
+  min-width: ${({ isOpen }) => isOpen ? '200px' : '80px'};
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.primary};
   position: relative;
@@ -35,13 +38,19 @@ const ContentContainer = styled.div`
 `;
 
 export const Drawer: React.FC<PropsWithChildren> = ({ children }) => {
+  const [isOpen, SetIsOpen] = useState<boolean>(false);
+
   return (
-    <DrawerContainer>
+    <DrawerContainer isOpen={isOpen}>
       <ContentContainer>
-        <LogoContainer>
-        </LogoContainer>
         {children}
       </ContentContainer>
+      <Absolute bottom={0}>
+        <Button onClick={() => SetIsOpen(!isOpen)}>
+          Toggle
+        </Button>
+      </Absolute>
     </DrawerContainer>
   );
+
 };

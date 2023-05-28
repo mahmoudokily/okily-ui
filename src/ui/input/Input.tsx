@@ -38,7 +38,7 @@ export const Input = React.forwardRef<any, Props>(
           {$suffix}
         </InputIcon>
       )
-    }, [$suffix, $shape, $suffixProps, $disabled, $withEffect])
+    }, [$suffix, $shape, $suffixProps, $disabled])
 
 
     return (

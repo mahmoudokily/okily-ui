@@ -31,10 +31,8 @@ export const LiElement = styled.li<PropsWithChildren<ListItemProps>>`
   color: ${({ selected, theme }) =>
     selected ? theme.colors.primaryDark : theme.colors.white};
   margin-left: 30px;
-  border-top-left-radius: 20px;
   line-height: 28px;
   margin-bottom: 10px;
-  border-bottom-left-radius: 20px;
   padding: 5px 20px;
   transition: 300ms all;
 
