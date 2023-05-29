@@ -4,13 +4,25 @@ import { Typography } from "../Typography";
 import { InputContainer, InputElement, InputIcon } from "./inputStyledElements";
 import { Props } from "./types";
 
-
-
-
 export const Input = React.forwardRef<any, Props>(
   (
     {
-      $containerProps, $withEffect = true, $inputProps, $placeholder, $error, $fill, $hint, $withBorder, $prefixProps, $shape, $size, $suffixProps, $variant, $disabled, $prefix, $suffix, ...props
+      $containerProps,
+      $withEffect = true,
+      $placeholder,
+      $error,
+      $fill,
+      $hint,
+      $withBorder,
+      $prefixProps,
+      $shape,
+      $size,
+      $suffixProps,
+      $variant,
+      $disabled,
+      $prefix,
+      $suffix,
+      ...props
     },
     ref
   ) => {
@@ -25,8 +37,8 @@ export const Input = React.forwardRef<any, Props>(
         >
           {$prefix}
         </InputIcon>
-      )
-    }, [$prefix, $prefixProps, $disabled, $shape, $size])
+      );
+    }, [$prefix, $prefixProps, $disabled, $shape, $size]);
     const Suffix = useCallback(() => {
       return (
         <InputIcon
@@ -37,22 +49,29 @@ export const Input = React.forwardRef<any, Props>(
         >
           {$suffix}
         </InputIcon>
-      )
-    }, [$suffix, $shape, $suffixProps, $disabled])
-
+      );
+    }, [$suffix, $shape, $suffixProps, $disabled]);
 
     return (
       <Flex {...props}>
-        <InputContainer $withBorder={$withBorder} $size={$size} $shape={$shape} $fill={$fill} $variant={$variant}  {...$containerProps}>
+        <InputContainer
+          $withBorder={$withBorder}
+          $size={$size}
+          $shape={$shape}
+          $fill={$fill}
+          $variant={$variant}
+          $error={$error}
+          {...$containerProps}
+        >
           {$prefix && <Prefix />}
           <InputElement
             $size={$size}
             $variant={$variant}
-            ref={ref}
             $fill={$fill}
             $disabled={$disabled}
             placeholder={$placeholder}
-            {...$inputProps}
+            ref={ref}
+            {...props}
           />
           {$suffix && <Suffix />}
         </InputContainer>
@@ -62,22 +81,25 @@ export const Input = React.forwardRef<any, Props>(
           </Typography>
         )}
         {$error && (
-          <Typography $capitalizeFirstLetter $size="caption10" color="error" mt={1}>
+          <Typography
+            $capitalizeFirstLetter
+            $size="caption10"
+            color="error"
+            mt={1}
+          >
             {$error}
           </Typography>
         )}
       </Flex>
-
     );
   }
 );
 
 Input.defaultProps = {
-  $size: 'default',
-  $variant: 'light',
+  $size: "default",
+  $variant: "light",
   $disabled: false,
   $fill: false,
-  $shape: 'default',
+  $shape: "default",
   $withBorder: true,
-
-}
+};
